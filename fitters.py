@@ -95,7 +95,7 @@ def quad_fitter(x_data,y_data,
   print('y = a * x**2 + b * x + c')
   display(fitter)
 
-  def add_exp(x, vertical, horizontal, power, ax=None, label=None):
+def add_exp(x, vertical, horizontal, power, ax=None, label=None):
     # This function adds an exponential fit to plot ax.
     # Create a figure if one isn't supplied.
     if ax is None:
@@ -145,7 +145,7 @@ def exp_fitter(x_data,y_data,
   print('y = vertical * e**(horizontal * x**power)')
   display(fitter)
 
- def add_power(x, power, scale, horizontal, vertical, ax=None, label=None):
+def add_power(x, power, scale, horizontal, vertical, ax=None, label=None):
     # This function adds a qudratic fit to plot ax.
     # Create a figure if one isn't supplied.
     if ax is None:
