@@ -201,3 +201,6 @@ def power_fitter(x_data,y_data,
   print('scale * (x - horizontal)**power + vertical')
   display(fitter)
   return fitter
+
+if __name__ == "__main__":
+    main()
