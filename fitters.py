@@ -19,7 +19,7 @@ def line_data_fit(x_data, y_data, slope, intercept):
     # Create range of x-values for line plot.
     x_in_range = np.linspace(np.min(x_data),np.max(x_data),n_fit_points)
     # Plot data points.
-    ax.errorbar(x_data,y_data,yerr=None)
+    ax.scatter(x_data,y_data)
     # Expand the figure vertically by a smidge.
     smidge = 0.1*(np.max(y_data)-np.min(y_data))
     ax.set_ylim(np.min(y_data)-smidge,np.max(y_data)+smidge)
