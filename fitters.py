@@ -10,7 +10,7 @@ def add_line(x, slope, intercept, ax=None, label=None):
     y = slope * (x - x.min()) + intercept
     ax.plot(x, y, label=label)
 
-def line_data_fit(x_data, y_data, slope, intercept):
+def line_data_fit(x_data, y_data, slope, intercept, xerr=None, yerr=None):
     # This function plots data points and a line.
     fig, ax = plt.subplots(1, 1, figsize=(8, 5))
     # Increase n_fit_points for smoother plot. 
@@ -19,7 +19,7 @@ def line_data_fit(x_data, y_data, slope, intercept):
     # Create range of x-values for line plot.
     x_in_range = np.linspace(np.min(x_data),np.max(x_data),n_fit_points)
     # Plot data points.
-    ax.scatter(x_data,y_data)
+    ax.errorbar(x_data,y_data,yerr=yerr,xerr=xerr,fmt="o")
     # Expand the figure vertically by a smidge.
     smidge = 0.1*(np.max(y_data)-np.min(y_data))
     ax.set_ylim(np.min(y_data)-smidge,np.max(y_data)+smidge)
@@ -28,7 +28,8 @@ def line_data_fit(x_data, y_data, slope, intercept):
 
 def line_fitter(x_data,y_data,
                 min_slope=-10,max_slope=10,slope_step=0.1,
-                min_intercept=-10,max_intercept=10,intercept_step=0.1):
+                min_intercept=-10,max_intercept=10,intercept_step=0.1,
+                xerr=None,yerr=None):
   if (min_slope<1<max_slope):
     slope_value = 1
   else:
@@ -40,7 +41,8 @@ def line_fitter(x_data,y_data,
   fitter = widgets.interactive(
       line_data_fit, x_data = widgets.fixed(x_data), y_data = widgets.fixed(y_data),     
       slope=widgets.FloatSlider(min=min_slope, max=max_slope, step=slope_step, value=slope_value),
-      intercept=widgets.FloatSlider(min=min_intercept, max=max_intercept, step=intercept_step, value=intercept_value)
+      intercept=widgets.FloatSlider(min=min_intercept, max=max_intercept, step=intercept_step, value=intercept_value),
+      xerr,yerr
   )
   print('y = slope * x + intercept')
   display(fitter)
