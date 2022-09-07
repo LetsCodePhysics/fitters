@@ -10,7 +10,7 @@ def add_line(x, slope, intercept, ax=None, label=None):
     y = slope * (x - x.min()) + intercept
     ax.plot(x, y, label=label)
 
-def line_data_fit(x_data, y_data, slope, intercept, xerr=None, yerr=None):
+def line_data_fit(x_data, y_data, xerr=None, yerr=None, slope=1, intercept=0):
     # This function plots data points and a line.
     fig, ax = plt.subplots(1, 1, figsize=(8, 5))
     # Increase n_fit_points for smoother plot. 
@@ -40,9 +40,8 @@ def line_fitter(x_data,y_data,
     intercept_value = (min_intercept+max_intercept)/2
   fitter = widgets.interactive(
       line_data_fit, x_data = widgets.fixed(x_data), y_data = widgets.fixed(y_data),     
-      slope=widgets.FloatSlider(min=min_slope, max=max_slope, step=slope_step, value=slope_value),
-      intercept=widgets.FloatSlider(min=min_intercept, max=max_intercept, step=intercept_step, value=intercept_value),
-      xerr,yerr
+      xerr, yerr, slope=widgets.FloatSlider(min=min_slope, max=max_slope, step=slope_step, value=slope_value),
+      intercept=widgets.FloatSlider(min=min_intercept, max=max_intercept, step=intercept_step, value=intercept_value)
   )
   print('y = slope * x + intercept')
   display(fitter)
