@@ -9,6 +9,7 @@ def add_line(x, slope, intercept, ax=None, label=None):
         fig, ax = plt.subplots(1, 1, figsize=(8, 5))
     y = slope * (x - x.min()) + intercept
     ax.plot(x, y, label=label)
+    plt.show()
 
 def line_data_fit(x_data, y_data, xerr=None, yerr=None, slope=None, intercept=None):
     # This function plots data points and a line.
@@ -25,6 +26,7 @@ def line_data_fit(x_data, y_data, xerr=None, yerr=None, slope=None, intercept=No
     ax.set_ylim(np.min(y_data)-smidge,np.max(y_data)+smidge)
     # Add line plot.
     add_line(x_in_range, slope, intercept, ax=ax)
+    plt.show()
 
 def line_fitter(x_data,y_data,xerr=None,yerr=None,
                 min_slope=-10,max_slope=10,slope_step=0.1,
@@ -53,6 +55,7 @@ def add_quad(x, a, b, c, ax=None, label=None):
         fig, ax = plt.subplots(1, 1, figsize=(8, 5))
     y = a * x**2 + b * x + c
     ax.plot(x, y, label=label)
+    plt.show()
 
 def quad_data_fit(x_data, y_data, xerr=None, yerr=None, a=None, b=None, c=None):
     # This function plots data points and a quadratic fit.
@@ -105,6 +108,7 @@ def add_exp(x, vertical, horizontal, power, ax=None, label=None):
         fig, ax = plt.subplots(1, 1, figsize=(8, 5))
     y = vertical * np.exp(horizontal * x**power)
     ax.plot(x, y, label=label)
+    plt.show()
 
 def exp_data_fit(x_data, y_data, xerr=None, yerr=None, vertical=None, horizontal=None, power=None):
     # This function plots data points and an exponential fit.
@@ -156,6 +160,7 @@ def add_power(x, power, scale, horizontal, vertical, ax=None, label=None):
         fig, ax = plt.subplots(1, 1, figsize=(8, 5))
     y = scale * (x - horizontal)**power + vertical
     ax.plot(x, y, label=label)
+    plt.show()
 
 def power_data_fit(x_data, y_data, xerr=None, yerr=None, power=None, scale=None, horizontal=None, vertical=None):
     # This function plots data points and a power-law fit.
